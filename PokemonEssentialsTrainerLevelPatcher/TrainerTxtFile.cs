@@ -26,14 +26,27 @@ namespace PokemonEssentialsTrainerLevelPatcher
             this.levelMult = levelMult;
         }
 
-
-        public void UpdateTrainerTxtFile()
+        /// <summary>
+        /// Reads File from <see cref="Path"/>, and writes updated file to <paramref name="newPath"/>
+        /// </summary>
+        /// <param name="newPath">path for new file</param>
+        public void WriteUpdatedTrainerTxtFile(string newPath)
         {
             string[] fileLines = File.ReadAllLines(Path);
             ChangePokemonLevel(fileLines);
             File.Delete(Path);
             File.WriteAllLines(Path, fileLines);
         }
+
+        /// <summary>
+        /// Reads File from <see cref="Path"/>, updates it and overides it with the updated data
+        /// </summary>
+        public void UpdateTrainerTxtFile()
+        {
+            WriteUpdatedTrainerTxtFile(Path);
+        }
+
+        
 
         private void ChangePokemonLevel(string[] allLines)
         {
