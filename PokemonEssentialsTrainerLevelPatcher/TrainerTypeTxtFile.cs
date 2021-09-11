@@ -57,16 +57,16 @@ namespace PokemonEssentialsTrainerLevelPatcher
 
         private string ChangeTrainerTypeBaseMoney(string TrainerTypeDataLine)
         {
-            //Split PokémonData into the diffrent fields
-            string[] TrainerTypeDate = TrainerTypeDataLine.Split(',');
-            //get level
-            int baseMoney = int.Parse(TrainerTypeDate[3]);
-            //multipy level
+            //Split TrainerTypeData into the diffrent fields
+            string[] TrainerTypeData = TrainerTypeDataLine.Split(',');
+            //get base money
+            int baseMoney = int.Parse(TrainerTypeData[3]);
+            //multipy base money
             baseMoney = Math.Max(Convert.ToInt32(moneyMult*baseMoney),0);
-
-            TrainerTypeDate[3] = baseMoney.ToString();
-
-            return string.Join(',', TrainerTypeDate);
+            //put basemoney back into TrainerTypeData
+            TrainerTypeData[3] = baseMoney.ToString();
+            //retrun updatedTrainerTypeData
+            return string.Join(',', TrainerTypeData);
         }
     }
 }

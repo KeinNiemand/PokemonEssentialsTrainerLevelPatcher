@@ -79,9 +79,9 @@ namespace PokemonEssentialsTrainerLevelPatcher
             byte level = byte.Parse(PokémonData[1]);
             //multipy level
             level = Math.Clamp(Convert.ToByte(levelMult*level),(byte)1,(byte)100);
-
+            //put level back into pokemon data
             PokémonData[1] = level.ToString();
-
+            //return updatedTrainerTypeData
             return string.Join(',', PokémonData);
         }
     }
